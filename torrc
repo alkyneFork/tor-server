@@ -14,15 +14,18 @@ ORPort 9001                  # common ports are 9001, 443
 
 # Mirror directory information for others (optional, not used on bridge)
 DirPort 9030                 # common ports are 9030, 80
+DirPortFrontPage /var/lib/tor/tor-exit-notice.html
 
 # Run Tor only as a server (no local applications)
 SocksPort 0
 ControlSocket 0
 
-# Run as a relay only (change policy to enable exit node)
-ExitPolicy reject *:*        # no exits allowed
-ExitPolicy reject6 *:*
+# Run as a Exit node
 ExitRelay 1
+ExitPolicy accept *:80-81
+ExitPolicy accept *:443
+ExitPolicy reject *:*
+#ExitRelay 1
 IPv6Exit 1
 
 # Set limits
@@ -42,3 +45,5 @@ IPv6Exit 1
 ## the environment variables to add Nickname/ContactInfo below
 #Nickname Tor4example                 # only use letters and numbers
 #ContactInfo tor4@example.org
+
+Nickname Tor4rooviath
