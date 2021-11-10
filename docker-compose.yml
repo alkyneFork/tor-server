@@ -1,6 +1,6 @@
 version: '2.2'
 services:
-  relay:
+  exit:
     image: chriswayg/tor-server
     init: true
     restart: always
